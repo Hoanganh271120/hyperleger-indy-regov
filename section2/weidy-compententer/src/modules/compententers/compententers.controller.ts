@@ -17,12 +17,12 @@ export class CompententersController {
     );
   }
 
-  @Post('/credentials/accept')
-  public async acceptCredential(
-    @Query('credential-id') credentialId: string,
-  ) {
-    return await this.compententersService.acceptOffer(this.sessionsService.session, credentialId);
-  }
+  // @Post('/credentials/accept')
+  // public async acceptCredential(
+  //   @Query('credential-id') credentialId: string,
+  // ) {
+  //   return await this.compententersService.acceptOffer(this.sessionsService.session, credentialId);
+  // }
 
   @Post('/credentials/offer')
   public async offerCredential(
@@ -41,7 +41,7 @@ export class CompententersController {
     return await this.compententersService.createProofRequest(this.sessionsService.session, credDefId);
   }
 
-  @Get('/proofs/check')
+  @Get('/proofs/verify')
   public async verifyProof(@Query('proof-id') proofId?: string) {
     return await this.compententersService.verifyProof(
       this.sessionsService.session,

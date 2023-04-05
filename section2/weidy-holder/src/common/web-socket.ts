@@ -8,8 +8,8 @@ import {
   ProofEventTypes,
   ProofState,
   ProofStateChangedEvent,
-} from "@aries-framework/core";
-import { BaseAgent } from "./base-agent";
+} from '@aries-framework/core';
+import { BaseAgent } from './base-agent';
 
 export class HandeWebSocket {
   public listenEvents(session: BaseAgent) {
@@ -20,7 +20,7 @@ export class HandeWebSocket {
           console.log(`Connection successfully `, payload);
           session.data.connectionId = payload.connectionRecord.id;
         }
-      }
+      },
     );
     session.agent.events.on<CredentialStateChangedEvent>(
       CredentialEventTypes.CredentialStateChanged,
@@ -29,19 +29,17 @@ export class HandeWebSocket {
           console.log(`Credential received:`, payload);
           session.data.credentialId = payload.credentialRecord.id;
         }
-      }
+      },
     );
 
     session.agent.events.on<ProofStateChangedEvent>(
       ProofEventTypes.ProofStateChanged,
       async ({ payload }) => {
-        console.log(`Proof Request received111:`, payload);
-
-        if (payload.proofRecord.state === ProofState.RequestSent) {
-          console.log(`Proof Request sent:`, payload);
+        if (payload.proofRecord.state === ProofState.RequestReceived) {
+          console.log(`Proof Request received:`, payload);
           session.data.proofId = payload.proofRecord.id;
         }
-      }
+      },
     );
   }
 }

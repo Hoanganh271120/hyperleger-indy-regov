@@ -1,16 +1,16 @@
 import {
   Agent,
-  AutoAcceptCredential,
   HttpOutboundTransport,
   IndyPoolConfig,
   InitConfig,
   WsOutboundTransport,
-} from "@aries-framework/core";
+  AutoAcceptCredential,
+} from '@aries-framework/core';
 import {
   agentDependencies,
   HttpInboundTransport,
   WsInboundTransport,
-} from "@aries-framework/node";
+} from '@aries-framework/node';
 
 export class BaseAgent {
   public config: InitConfig;
@@ -29,7 +29,6 @@ export class BaseAgent {
     label,
     walletConfig,
     ledgerConfig,
-    didSeed,
   }: {
     port: number;
     label: string;
@@ -38,7 +37,6 @@ export class BaseAgent {
       key: string;
     };
     ledgerConfig: IndyPoolConfig;
-    didSeed?: string;
   }) {
     this.port = port;
     this.label = label;
@@ -46,7 +44,6 @@ export class BaseAgent {
     const agentConfig = {
       label: label,
       walletConfig,
-      publicDidSeed: didSeed,
       indyLedgers: [ledgerConfig],
       endpoints: [`http://localhost:${this.port}`],
       autoAcceptConnections: true,

@@ -40,14 +40,14 @@ export class CompententersService {
   public async createCredentialSchema(compententer: BaseAgent): Promise<any> {
     const schemaTemplate: SchemaTemplate = {
       name: 'Driver Licence',
-      version: '1.0',
+      version: '1.2',
       attributes: [
         'name',
         'issue_date',
         'expiry_date',
         'vehicle_category_code',
-        'sex',
         'birth_year',
+        'sex',
       ],
     };
 
@@ -76,6 +76,8 @@ export class CompententersService {
   }
 
   public async createProofRequest(compententer: BaseAgent, credDefId: string) {
+    console.log("compententer", compententer);
+    
     const proofRecord = await compententer.agent.proofs.requestProof({
       protocolVersion: 'v1',
       connectionId: compententer.data.connectionId,

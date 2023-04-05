@@ -36,8 +36,8 @@ export class SessionsService {
     }
     this.session = newSession;
     await this.session.initAgent();
-    const handleWebSocket = new HandeWebSocket(this.session);
-    handleWebSocket.listenEvents();
+    const handleWebSocket = new HandeWebSocket();
+    handleWebSocket.listenEvents(this.session);
     return {
       status: HttpStatus.OK,
       role: 'Compententer',
