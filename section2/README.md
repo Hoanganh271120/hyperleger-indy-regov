@@ -36,7 +36,7 @@ The solution applies Permissioned Public Blockchain & Decentralized Identity mec
 
   1. Move to the weidy-compententer and weidy-holder directory and run npm i
   
-  2. Flow https://aries.js.org/guides/getting-started/installation/nodejs/linux to install aries framework
+  2. Init docker and build Dockerfile to setup environment or if docker error you can follow https://aries.js.org/guides/getting-started/installation/nodejs/linux to install aries framework
   3. Run: npm run start:dev to start project
   4. To check out whether Agent apps running properly, call to the corresponding hosts 
 -	***Compententer***: `localhost:1111`, `
